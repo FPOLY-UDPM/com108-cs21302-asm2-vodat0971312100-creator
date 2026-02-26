@@ -1,7 +1,7 @@
 /******************************************************************************
- * Họ và tên: [ĐIỀN TÊN TẠI ĐÂY]
- * MSSV:      [ĐIỀN MSSV TẠI ĐÂY]
- * Lớp:       [ĐIỀN LỚP TẠI ĐÂY]
+ * Họ và tên: [Nguyễn Võ Minh Đạt]
+ * MSSV:      [PS49299]
+ * Lớp:       [COM108]
  *****************************************************************************/
 
 // Tạo file asm2.c và hoàn thiện nội dung Assignment từ nội dung file asm1.c
@@ -21,7 +21,121 @@
 // Viết chương trình C thực hiện các chức năng trên
 
 #include <stdio.h>
+int UclnBcnn(int Ucln, int Bcnn){
+    int x,y;
+    printf("x:\n");
+    scanf("%d", &x);
+    printf("y:\n");
+    scanf("%d", &y);
+    int i,n;
+    while(x%i==0){
+        
+        i++;
+    }
+}
+float tinhTien2(float gioBatdau, float gioKetthuc){
+    printf("nhập giờ bắt đầu :\n");
+    scanf("%f", &gioBatdau);
+    printf("nhập giờ kết thúc :\n");
+    scanf("%f", &gioKetthuc);
+    float Gio=gioKetthuc-gioBatdau;
+    float Tongtien;
+    if(Gio>=0 && Gio<=11){
+        if(gioBatdau>=4 && gioBatdau<=7){
+        if(Gio <4){
+            Tongtien= (Gio * 150000)*0.9;
+            printf("số tiền phải trả là:%.1f",Tongtien);
+        }
+        else if(Gio>=4){
+            Tongtien=(450000+(Gio-3)*105000)*0.9;
+            printf("sô tiên phải trả là:%.1f",Tongtien);
+        }
+    }
+    else{
+        if(Gio <4){
+            Tongtien= (Gio * 150000)*0.9;
+            printf("số tiền phải trả là:%.1f",Tongtien);
+        }
+        else if(Gio>=4){
+            Tongtien=(450000+(Gio-3)*105000)*0.9;
+            printf("sô tiên phải trả là:%.1f",Tongtien);
+        }
+    }
+  
+}
+else{
+    printf("số giờ không hợp lệ vui lòng nhập lại!");
+}
+return 0;
+}
+int hocluc(float soDiem){
+    printf("Nhap so diem:\n");
+    scanf("%f", &soDiem);
 
+    if (soDiem >= 0 && soDiem <= 10){
+        if (soDiem >= 9){
+            printf("Hoc luc xuat sac\n");
+        }
+        else if (soDiem >= 8){
+            printf("Hoc luc gioi\n");
+        }
+        else if (soDiem >= 6.5){
+            printf("Hoc luc kha\n");
+        }
+        else if (soDiem >= 5){
+            printf("Hoc luc trung binh\n");
+        }
+        else if (soDiem >= 3.5){
+            printf("Hoc luc yeu\n");
+        }
+        else{
+            printf("Hoc luc kem\n");
+        }
+    } else {
+        printf("So diem khong hop le\n");
+    }
+
+    return 0;
+}
+int Tiendien(float kWh){
+    printf("số điện tiêu thụ 1 tháng là :");
+    scanf("%f",&kWh);
+    if(kWh<=600 && kWh>0){
+        if(kWh >= 401){
+            printf("giá kí điện bậc 6 là 3.460 đồng/kWh =%.3f",(kWh-400)*3.460+100*3.350+100*2.998+100*2.380+50*2.050+50*1.984);
+        }
+        else if(kWh>=301 && kWh<=400){
+           printf("giá kí điện bậc 5 là 3.350 đồng/kWh =%.3f",kWh-300*3.350+100*2.998+100*2.380+50*2.050+50*1.984);
+        }
+        else if(kWh>= 201 && kWh<=300 ){
+            printf("giá  kí điện bậc 4 là 2.998 đồng/kWh =%.3f",kWh-200*2.998+100*2.380+50*2.050+50*1.984 );
+        }
+        else if (kWh >= 101 && kWh <=200){
+            printf("giá  kí điện bậc 3 là 2.380 đồng/kWh =%.3f",kWh-100*2.380+50*2.050+50*1.984);
+        }
+        else if (kWh>=51 && kWh<=100){
+            printf("giá  kí điện bậc 2 là 2.050 đồng/kWh =%.3f",kWh-50*2.050+50*1.984);
+        }
+        else{
+            printf("giá  kí điện bậc 1 là 1.984 đồng/kWh =%.3f",kWh*1.984);
+        }
+    }
+    else{
+        printf("số kí điện không hợp lệ! \nvui lòng nhập lạihihi  ");
+    }
+    return 0;
+}
+int Songuyen(int x ){
+    printf("nhập vào giá trị x:");
+    scanf("%d",&x);
+    if(x%2==0 && x%2!=0 && x==0  ){
+        printf(" không phải là số nguyên\n");
+    }
+    else{
+        printf("là một con số nguyên\n ");
+    }
+    return 0;
+}
 int main() {
     int chonChucNang;
 
@@ -45,6 +159,10 @@ int main() {
             case 1:
                 // Gọi hàm kiểm tra số nguyên
                 printf("DA CHON CHUC NANG 1: KIEM TRA SO NGUYEN\n");
+                int x;
+                printf("nhap vao gia tri a:");
+                scanf("%d",&x);
+                int Kiemtra = Songuyen(x);
                 break;
             case 2:
                 // Gọi hàm tìm Ước số chung và bội số chung
@@ -53,10 +171,15 @@ int main() {
             case 3:
                 // Gọi hàm tính tiền cho quán Karaoke
                 printf("DA CHON CHUC NANG 3: TINH TIEN CHO QUAN KARAOKE\n");
+                float soTien = tinhTien2(0, 0);
                 break;
             case 4:
                 // Gọi hàm tính tiền điện
                 printf("DA CHON CHUC NANG 4: TINH TIEN DIEN\n");
+                float y;
+                printf("nhập số kí điện");
+                scanf("%.2f",&y);
+                float Giatien= Tiendien(y);
                 break;
             case 5:
                 // Gọi hàm đổi tiền
@@ -73,6 +196,10 @@ int main() {
             case 8:
                 // Gọi hàm sắp xếp thông tin sinh viên
                 printf("DA CHON CHUC NANG 8: SAP XEP THONG TIN SINH VIEN\n");
+                float z;
+                printf("xin nhập điểm số:\n");
+                scanf("%.2f",&z);
+                float Thanhtich= hocluc(z);
                 break;
             case 9:
                 // Gọi hàm game FPOLY-LOTT
