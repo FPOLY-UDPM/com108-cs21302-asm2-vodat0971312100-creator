@@ -24,6 +24,31 @@
 #include <time.h>
 #include <stdlib.h>
 #include <windows.h>
+int Tinhphanso(float J, float Q, float K, float A){
+    printf("nhập vào phần tử của phân số 1 là:");
+    scanf("%f", &J);
+    printf("nhập vào phần mẫu của phân số 1 là:");
+    scanf("%f", &Q);
+    printf("nhập vào phần tử của phân số 2 là:");
+    scanf("%f", &K);
+    printf("nhập vào phần mẫu của phân số 2 là:");
+    scanf("%f", &A);
+    double Phanso1=J/Q;
+    double Phanso2=K/A;
+    if(Q!=0 && A!=0){
+    double tong=Phanso1+Phanso2;
+    printf("tổng của hai phân số là:%2f\n",tong);
+    double hieu=Phanso1+Phanso2;
+    printf("hiệu của hai phân số là:%2f\n",hieu);
+    double tich=Phanso1*Phanso2;
+    printf("tích của hai phân số là:%2f\n",tich);
+    double thuong=Phanso1/Phanso2;
+    printf("thương của hai phân số là:%2f\n",thuong);
+    }
+    else{
+        printf("mẫu số không hợp lệ!");
+    }
+}
 void randA(int arr[], int size, int min, int max ){
     srand(time(NULL));
     for(int i =0; i< size; i++){
@@ -33,24 +58,28 @@ void randA(int arr[], int size, int min, int max ){
 void printfA(int arr[], int size ){
     printf("các số là:\n ");
     for(int i =0; i<size ;i++){
-        printf("%d", arr[i]);
+        printf("So1=%d||So2=%d", arr[i],arr[i+1]);
     }
     printf("\n");
 }
-int Fpolylott(int a, int b){
+int FpolyLott(int a, int b) {
     int maDUthi[2];
-    randA(maDUthi,2,1,15);
-    printfA(maDUthi,2);
-    if(maDUthi[0]==0 || maDUthi[1]==0){
-        printf("chúc bạn may mắn lần sau\n");
+    randA(maDUthi, 1, 1, 15); 
+     printfA(maDUthi, 1);
+    printf("Ket qua may quay:\n ");
+   
+
+    int count = 0;
+    if (a == maDUthi[0] || a == maDUthi[1]) count++;
+    if (b == maDUthi[0] || b == maDUthi[1]) count++;
+    if (count == 2) {
+        printf("Chuc mung ban da trung giai nhat!\n");
+    } else if (count == 1) {
+        printf("Chuc mung ban da trung giai nhi!\n");
+    } else {
+        printf("Chuc ban may man lan sau\n");
     }
-    else if(maDUthi[0]==1 || maDUthi[1]==1){
-        printf("chúc mừng bạn đã trúng giải nhì\n");
-    }
-    else if(maDUthi[0]==2 || maDUthi[1]==2){
-        printf("chúc mừng bạn đã trúng giải nhất!\n");
-    }
- 
+    return 0;
 }
 int vaytien2( float Phantramvay){
     double nam;
@@ -328,11 +357,12 @@ int main() {
                 scanf("%d", &So1 );
                 printf("xin mời nhập số So2(từ 1 tới 15):\n");
                 scanf("%d", &So2 );
-                int xoso= Fpolylott(So1,So2);
+                int xoso= FpolyLott(So1,So2);
                 break;
             case 10:
                 // Gọi hàm tính toán phân số
                 printf("DA CHON CHUC NANG 10: TINH TOAN PHAN SO\n");
+                float TinhPhanso=Tinhphanso(0,0,0,0);
                 break;
             case 0:
                 printf("Thoat chuong trinh.\n");
