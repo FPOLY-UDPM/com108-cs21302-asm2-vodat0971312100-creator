@@ -21,17 +21,124 @@
 // Viết chương trình C thực hiện các chức năng trên
 
 #include <stdio.h>
-int UclnBcnn(int Ucln, int Bcnn){
-    int x,y;
-    printf("x:\n");
-    scanf("%d", &x);
-    printf("y:\n");
-    scanf("%d", &y);
-    int i,n;
-    while(x%i==0){
-        
-        i++;
+#include <time.h>
+#include <stdlib.h>
+#include <windows.h>
+void randA(int arr[], int size, int min, int max ){
+    srand(time(NULL));
+    for(int i =0; i< size; i++){
+        arr[i]=rand() %(max-min+1)+1;
     }
+}
+void printfA(int arr[], int size ){
+    printf("các số là:\n ");
+    for(int i =0; i<size ;i++){
+        printf("%d", arr[i]);
+    }
+    printf("\n");
+}
+int Fpolylott(int a, int b){
+    int maDUthi[2];
+    randA(maDUthi,2,1,15);
+    printfA(maDUthi,2);
+    if(maDUthi[0]==0 || maDUthi[1]==0){
+        printf("chúc bạn may mắn lần sau\n");
+    }
+    else if(maDUthi[0]==1 || maDUthi[1]==1){
+        printf("chúc mừng bạn đã trúng giải nhì\n");
+    }
+    else if(maDUthi[0]==2 || maDUthi[1]==2){
+        printf("chúc mừng bạn đã trúng giải nhất!\n");
+    }
+ 
+}
+int vaytien2( float Phantramvay){
+    double nam;
+    printf("hãy nhập vào số phần trăm vay:\n");
+    scanf("%f", &Phantramvay);
+     if (Phantramvay >= 0 && Phantramvay <= 100) {
+        printf("nhap vao so nam vay toi da:\n");
+        scanf("%lf", &nam);
+
+        double Laisuat1thang = 0.006;
+        double Tienxe = 500000000;
+        double Tienvay = Tienxe * (Phantramvay / 100);
+        double Tientratruoc = Tienxe - Tienvay;
+        double soThang = nam * 12;
+        double tien1Thang = Tienvay / soThang;
+        double Tongtratruoc = Tientratruoc;
+        double soDuno = Tienvay;
+
+        printf("\nSo tien tra truoc la: %.0f\n", Tientratruoc);
+        printf("--------------------------------------------\n");
+
+        for (int i = 1; i <= (int)soThang; i++) {
+            double Tienlaithangnay = soDuno * Laisuat1thang;
+            double Sotienphaitra = Tienlaithangnay + tien1Thang;
+            
+            Tongtratruoc += Sotienphaitra;
+            soDuno -= tien1Thang;
+
+            // Bỏ dấu & ở các biến dưới đây
+            printf("Thang %d | Goc: %.0f | Lai: %.0f | Tong: %.0f\n", 
+                    i, tien1Thang, Tienlaithangnay, Sotienphaitra);
+        }
+        
+        printf("--------------------------------------------\n");
+        printf("Tong so tien phai tra ca goc lan lai la: %.0f\n", Tongtratruoc);
+    } else {
+        printf("so phan tram vay khong hop le!");
+    }
+
+    return 0;
+}
+int vaytien(int soTien){
+    printf("nhập số tiền để vay:\n");
+    scanf("%d", &soTien);
+    int tien1Thang= soTien/12;
+    if(soTien>0){
+            int Tienthang1=tien1Thang +(0.05*soTien);
+            int Tienthang2=tien1Thang +(0.05*(soTien-(tien1Thang*1)));
+            int Tienthang3=tien1Thang +(0.05*(soTien-(tien1Thang*2)));
+            int Tienthang4=tien1Thang +(0.05*(soTien-(tien1Thang*3)));
+            int Tienthang5=tien1Thang +(0.05*(soTien-(tien1Thang*4)));
+            int Tienthang6=tien1Thang +(0.05*(soTien-(tien1Thang*5)));
+            int Tienthang7=tien1Thang +(0.05*(soTien-(tien1Thang*6)));
+            int Tienthang8=tien1Thang +(0.05*(soTien-(tien1Thang*7)));
+            int Tienthang9=tien1Thang +(0.05*(soTien-(tien1Thang*8)));
+            int Tienthang10=tien1Thang +(0.05*(soTien-(tien1Thang*9)));
+            int Tienthang11=tien1Thang +(0.05*(soTien-(tien1Thang*10)));
+            int Tienthang12=tien1Thang +(0.05*(soTien-(tien1Thang*11)));
+        printf("số tiền phải trả sau 12 tháng là:%d",Tienthang1+Tienthang2+Tienthang3+Tienthang4+Tienthang5+Tienthang6+Tienthang7+Tienthang8+Tienthang9+Tienthang10+Tienthang11+Tienthang12 );
+    }
+    else{
+        printf("số tiền không hợp lệ vui lòng nhập lại:");
+    }
+}
+int Doitien(int T){
+    printf("hãy nhập vào số tiên là:\n");
+    scanf("%d", &T);
+    int Menhgia[9]={500,200,100,50,20,10,5,2,1};
+    int n= sizeof(Menhgia)/sizeof(Menhgia[0]);
+    for(int i=0; i<n; i++){
+        if(T>Menhgia[i]){
+    int count =T/Menhgia[i];
+    T=T%Menhgia[i];
+    printf(" %d là số tờ %d\n",count,Menhgia[i]);
+        }
+}
+return 0;
+}
+int Ucln(int u,int b){
+    while(b!=0){
+        int Phandu= u%b;
+        u=b;
+        b=Phandu;
+    }
+    return u;
+}
+int Bcnn(int u,int b, int Ucln ){
+    return (u*b)/Ucln;
 }
 float tinhTien2(float gioBatdau, float gioKetthuc){
     printf("nhập giờ bắt đầu :\n");
@@ -167,6 +274,15 @@ int main() {
             case 2:
                 // Gọi hàm tìm Ước số chung và bội số chung
                 printf("DA CHON CHUC NANG 2: TIM UOC SO CHUNG VA BOI SO CHUNG CUA 2 SO\n");
+                int u,b;
+                printf("nhập vào u:\n");
+                scanf("%d", &u);
+                printf("nhập vào b:\n");
+                scanf("%d", &b);
+                int ucln =Ucln(u,b);
+                int bcnn =Bcnn(u,b,ucln);
+                printf("Ucln(u,b)=%d\n", ucln);
+                printf("Bcnn(u,b)=%d\n", bcnn);
                 break;
             case 3:
                 // Gọi hàm tính tiền cho quán Karaoke
@@ -184,14 +300,17 @@ int main() {
             case 5:
                 // Gọi hàm đổi tiền
                 printf("DA CHON CHUC NANG 5: DOI TIEN\n");
+                int doitien= Doitien(0);
                 break;
             case 6:
                 // Gọi hàm tính lãi suất vay ngân hàng
                 printf("DA CHON CHUC NANG 6: TINH LAI SUAT VAY NGAN HANG VAY TRA GOP\n");
+                int VayTien=vaytien(0);
                 break;
             case 7:
                 // Gọi hàm vay tiền mua xe
                 printf("DA CHON CHUC NANG 7: VAY TIEN MUA XE\n");
+                int Muaxe= vaytien2(0);
                 break;
             case 8:
                 // Gọi hàm sắp xếp thông tin sinh viên
@@ -204,6 +323,12 @@ int main() {
             case 9:
                 // Gọi hàm game FPOLY-LOTT
                 printf("DA CHON CHUC NANG 9: GAME FPOLY-LOTT\n");
+                int So1,So2;
+                printf("xin mời nhập số So1(từ 1 tới 15):\n");
+                scanf("%d", &So1 );
+                printf("xin mời nhập số So2(từ 1 tới 15):\n");
+                scanf("%d", &So2 );
+                int xoso= Fpolylott(So1,So2);
                 break;
             case 10:
                 // Gọi hàm tính toán phân số
