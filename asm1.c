@@ -175,7 +175,7 @@ float tinhTien2(float gioBatdau, float gioKetthuc){
     scanf("%f", &gioKetthuc);
     float Gio=gioKetthuc-gioBatdau;
     float Tongtien;
-    if(Gio>=0 && Gio<=11){
+    if(Gio>0 && Gio<=11){
         if(gioBatdau>=4 && gioBatdau<=7){
         if(Gio <4){
             Tongtien= (Gio * 150000)*0.9;
@@ -188,11 +188,11 @@ float tinhTien2(float gioBatdau, float gioKetthuc){
     }
     else{
         if(Gio <4){
-            Tongtien= (Gio * 150000)*0.9;
+            Tongtien= (Gio * 150000);
             printf("số tiền phải trả là:%.1f",Tongtien);
         }
         else if(Gio>=4){
-            Tongtien=(450000+(Gio-3)*105000)*0.9;
+            Tongtien=(450000+(Gio-3)*105000);
             printf("sô tiên phải trả là:%.1f",Tongtien);
         }
     }
@@ -237,22 +237,22 @@ int Tiendien(float kWh){
     scanf("%f",&kWh);
     if(kWh<=600 && kWh>0){
         if(kWh >= 401){
-            printf("giá kí điện bậc 6 là 3.460 đồng/kWh =%.3f",(kWh-400)*3.460+100*3.350+100*2.998+100*2.380+50*2.050+50*1.984);
+            printf("giá kí điện bậc 6 là 2.927 đồng/kWh =%.3f",(kWh-400)*2.927+100*2.834+100*2.536+100*2.014+50*1.734+50*1.678);
         }
         else if(kWh>=301 && kWh<=400){
-           printf("giá kí điện bậc 5 là 3.350 đồng/kWh =%.3f",kWh-300*3.350+100*2.998+100*2.380+50*2.050+50*1.984);
+           printf("giá kí điện bậc 5 là 2.834 đồng/kWh =%.3f",kWh-300*2.834+100*2.536+100*2.014+50*1.734+50*1.678);
         }
         else if(kWh>= 201 && kWh<=300 ){
-            printf("giá  kí điện bậc 4 là 2.998 đồng/kWh =%.3f",kWh-200*2.998+100*2.380+50*2.050+50*1.984 );
+            printf("giá  kí điện bậc 4 là 2.536 đồng/kWh =%.3f",kWh-200*2.536+100*2.014+50*1.734+50*1.678 );
         }
         else if (kWh >= 101 && kWh <=200){
-            printf("giá  kí điện bậc 3 là 2.380 đồng/kWh =%.3f",kWh-100*2.380+50*2.050+50*1.984);
+            printf("giá  kí điện bậc 3 là 2.014 đồng/kWh =%.3f",kWh-100*2.014+50*1.734+50*1.678);
         }
         else if (kWh>=51 && kWh<=100){
-            printf("giá  kí điện bậc 2 là 2.050 đồng/kWh =%.3f",kWh-50*2.050+50*1.984);
+            printf("giá  kí điện bậc 2 là 1.734 đồng/kWh =%.3f",kWh-50*1.734+50*1.678);
         }
         else{
-            printf("giá  kí điện bậc 1 là 1.984 đồng/kWh =%.3f",kWh*1.984);
+            printf("giá  kí điện bậc 1 là 1.678 đồng/kWh =%.3f",kWh*1.678);
         }
     }
     else{
@@ -260,7 +260,7 @@ int Tiendien(float kWh){
     }
     return 0;
 }
-int Songuyen(float x ){
+float Songuyen(float x ){
     printf("nhập vào giá trị x:");
     scanf("%f",&x);
     if (x == (int)x) {
