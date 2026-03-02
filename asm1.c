@@ -99,7 +99,7 @@ int vaytien2( float Phantramvay){
         double soDuno = Tienvay;
 
         printf("\nSo tien tra truoc la: %.0f\n", Tientratruoc);
-        printf("--------------------------------------------\n");
+    
 
         for (int i = 1; i <= (int)soThang; i++) {
             double Tienlaithangnay = soDuno * Laisuat1thang;
@@ -112,8 +112,7 @@ int vaytien2( float Phantramvay){
             printf("Thang %d | Goc: %.0f | Lai: %.0f | Tong: %.0f\n", 
                     i, tien1Thang, Tienlaithangnay, Sotienphaitra);
         }
-        
-        printf("--------------------------------------------\n");
+    
         printf("Tong so tien phai tra ca goc lan lai la: %.0f\n", Tongtratruoc);
     } else {
         printf("so phan tram vay khong hop le!");
@@ -261,14 +260,13 @@ int Tiendien(float kWh){
     }
     return 0;
 }
-int Songuyen(int x ){
+int Songuyen(float x ){
     printf("nhập vào giá trị x:");
-    scanf("%d",&x);
-    if(x%2==0 && x%2!=0 && x==0  ){
-        printf(" không phải là số nguyên\n");
-    }
-    else{
-        printf("là một con số nguyên\n ");
+    scanf("%f",&x);
+    if (x == (int)x) {
+        printf("%.2f la mot so nguyen\n", x);
+    } else {
+        printf("%.2f khong phai la so nguyen\n", x);
     }
     return 0;
 }
